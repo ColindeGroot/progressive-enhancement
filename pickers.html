@@ -1,29 +1,71 @@
 <!doctype html>
 <html lang="nl">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
-		<title>Favorieten picker / Progressive Enhancement / FDND</title>
-		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-		<link href="assets/styles.css" rel="stylesheet">
-		<style>
-			/* Schrijf hier gewoon je CSS voor dit component */
 
-			/* Hint: Dit component kun je volledig met HTML en CSS bouwen */
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Favorieten picker / Progressive Enhancement / FDND</title>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+		rel="stylesheet">
+	<link href="assets/styles.css" rel="stylesheet">
+	<!-- De kleurcodes van FDND:
+			#A675F5
+			#050542
+			#66E5BF
+			#FFFC86
+			-->
+	<style>
+		/* Schrijf hier gewoon je CSS voor dit component */
 
-			/* Hint: Kijk eens naar field-sizing
+
+		form{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			height: 15vh;
+			border-radius: 5px;
+			background-color:#A675F5;
+
+			input{
+				height: 3em;
+				border-radius: 5px;
+				border: none;
+				&::placeholder{
+					color: #000;
+					font-size: 1.5em;
+					font-weight: bold;
+				}
+			}
+		}
+
+		/* Hint: Dit component kun je volledig met HTML en CSS bouwen */
+
+		/* Hint: Kijk eens naar field-sizing
 			   https://developer.mozilla.org/en-US/docs/Web/CSS/field-sizing */
-		</style>
-	</head>
+	</style>
+</head>
 
-	<body>
-		<h1>Favorieten picker</h1>
+<body>
+	<h1>Favorieten picker</h1>
 
-		<form>
+	<form>
 
-			<!-- Hint: hoe kun je aan een invoerelement een lijst meegeven? -->
-
-			<!-- Een lijstje met docenten
+		<!-- Hint: hoe kun je aan een invoerelement een lijst meegeven? -->
+		<label hidden>Naam docent</label>
+		<input placeholder="Colin" list="suggesties" id="frontend" name="frontend">
+		<datalist id="suggesties">
+			<option value="Charley Muhren">
+			<option value="Cyd Stumpel">
+			<option value="Dion Pieters">
+			<option value="Joost Faber">
+			<option value="Justus Sturkenboom">
+			<option value="Koop Reynders">
+			<option value="Krijn Hoetmer">
+			<option value="Sanne 't Hooft">
+			<option value="Suus ten Voorde">
+		</datalist>
+		<!-- Een lijstje met docenten
 			Charley Muhren
 			Cyd Stumpel
 			Dion Pieters
@@ -36,20 +78,16 @@
 			Suus ten Voorde
 			-->
 
-			<!-- De kleurcodes van FDND:
-			#A675F5
-			#050542
-			#66E5BF
-			#FFFC86
-			-->
+		
 
-		</form>
+	</form>
 
-		<details open>
-			<summary>Demo video</summary>
-			<video src="assets/pickers.mp4" width="749" height="417" controls muted autoplay loop>
-				<a href="assets/pickers.mp4">assets/pickers.mp4</a>
-			</video>
-		</details>
-	</body>
+	<details >
+		<summary>Demo video</summary>
+		<video src="assets/pickers.mp4" width="749" height="417" controls muted autoplay loop>
+			<a href="assets/pickers.mp4">assets/pickers.mp4</a>
+		</video>
+	</details>
+</body>
+
 </html>
