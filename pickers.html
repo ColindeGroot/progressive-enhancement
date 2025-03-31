@@ -18,26 +18,106 @@
 		/* Schrijf hier gewoon je CSS voor dit component */
 
 
-		form{
+		form {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			position: relative;
 
 			height: 15vh;
 			border-radius: 5px;
-			background-color:#A675F5;
+			background-color: #A675F5;
 
-			input{
+			input {
+				color: #000;
+				font-size: 1em;
+				font-weight: bold;
+				padding-left: 1em;
+
 				height: 3em;
 				border-radius: 5px;
 				border: none;
-				&::placeholder{
+
+				&::placeholder {
 					color: #000;
-					font-size: 1.5em;
+					font-size: 1em;
 					font-weight: bold;
 				}
 			}
 		}
+
+		.colorpick input[type="color"] {
+			opacity: 0;
+			pointer-events: none;
+			position: absolute;
+			bottom: -50px;
+		}
+
+		form:focus-within.colorpick input[type="color"] {
+			opacity: 1;
+			pointer-events: auto;
+		}
+
+		form:has(input[type="color"][value="#A675F5"]) {
+			background-color: #A675F5;
+		}
+
+		form:has(input[type="color"][value="#050542"]) {
+			background-color: #050542;
+		}
+
+		form:has(input[type="color"][value="#66E5BF"]) {
+			background-color: #66E5BF;
+		}
+
+		form:has(input[type="color"][value="#FFFC86"]) {
+			background-color: #FFFC86;
+		}
+
+
+
+		/* deze werkt */
+		#form2 {
+			position: relative;
+			background-color: transparent;
+		}
+
+		#kleur {
+			padding: 0;
+			margin: 0;
+			background-color: transparent;
+			/* ondersteuning oudere browsers */
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+
+			width: 100%;
+			height: 15vh;
+			position: relative;
+
+			&:focus {
+				border: none;
+			}
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				pointer-events: none;
+				width: 100%;
+				height: 100%;
+
+			}
+		}
+
+		#naam {
+			position: absolute;
+		}
+
+
+
 
 		/* Hint: Dit component kun je volledig met HTML en CSS bouwen */
 
@@ -49,12 +129,12 @@
 <body>
 	<h1>Favorieten picker</h1>
 
+	<h2>Deze werkt (nog) niet</h2>
 	<form>
-
-		<!-- Hint: hoe kun je aan een invoerelement een lijst meegeven? -->
 		<label hidden>Naam docent</label>
-		<input placeholder="Colin" list="suggesties" id="frontend" name="frontend">
-		<datalist id="suggesties">
+		<input type="text" list="namen" id="frontend" name="frontend" placeholder="Kies een docent">
+
+		<datalist id="namen">
 			<option value="Charley Muhren">
 			<option value="Cyd Stumpel">
 			<option value="Dion Pieters">
@@ -65,24 +145,28 @@
 			<option value="Sanne 't Hooft">
 			<option value="Suus ten Voorde">
 		</datalist>
-		<!-- Een lijstje met docenten
-			Charley Muhren
-			Cyd Stumpel
-			Dion Pieters
-			Dorien Drees
-			Joost Faber
-			Justus Sturkenboom
-			Koop Reynders
-			Krijn Hoetmer
-			Sanne 't Hooft
-			Suus ten Voorde
-			-->
 
-		
-
+		<div class="colorpick">
+			<label hidden for="kleur">Kleur</label>
+			<input type="color" id="kleur" name="kleur" list="colors">
+			<datalist id="colors">
+				<option value="#A675F5">
+				<option value="#050542">
+				<option value="#66E5BF">
+				<option value="#FFFC86">
+			</datalist>
+		</div>
 	</form>
 
-	<details >
+	<!-- goede versie -->
+	 <h2>deze werkt wel</h2>
+	<form id="form2" action="">
+		<input id="kleur" type="color" list="colors">
+		<input id="naam" type="text" placeholder="Naam docent" list="namen">
+	</form>
+
+
+	<details>
 		<summary>Demo video</summary>
 		<video src="assets/pickers.mp4" width="749" height="417" controls muted autoplay loop>
 			<a href="assets/pickers.mp4">assets/pickers.mp4</a>
