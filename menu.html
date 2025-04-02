@@ -19,73 +19,74 @@
 			padding: 0;
 		}
 
+		@supports selector(:target) {
+			#navigation:target {
+				left: 0;
 
-		/* Wanneer het menu actief is, schaal en vervaag de rest van de content */
-		#navigation:target {
-			left: 0;
+				~main {
+					margin-left: 20vw;
+					filter: blur(3px);
+					transition: margin-left 0.2s ease-in-out, filter 0.3s ease;
+				}
 
-			~main {
-				margin-left: 20vw;
-				filter: blur(3px);
-				transition: margin-left 0.2s ease-in-out, filter 0.3s ease;
 			}
 
-		}
+			nav {
+				z-index: 999;
+				position: fixed;
+				top: 0;
+				left: -100%;
+				width: 80vw;
+				height: 100%;
+				background: white;
+				box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+				padding: 20px;
 
-		nav {
-			z-index: 999;
-			position: fixed;
-			top: 0;
-			left: -100%;
-			width: 80vw;
-			height: 100%;
-			background: white;
-			box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-			padding: 20px;
-
-			transition: 0.2s ease-out;
+				transition: 0.2s ease-out;
 
 
-			@media (min-width:800px){
-				width: 30vw;
+				@media (min-width:800px) {
+					width: 30vw;
+				}
 			}
-		}
 
-		.menu-button {
-			display: inline-block;
-			padding: 10px 20px;
-			background: #050542;
-			color: #66e5bf;
-			text-decoration: none;
-			font-size: 16px;
-			border-radius: 5px;
-		}
+			.menu-button {
+				display: inline-block;
+				padding: 10px 20px;
+				background: #050542;
+				color: #66e5bf;
+				text-decoration: none;
+				font-size: 16px;
+				border-radius: 5px;
+			}
 
-		.close-button {
-			display: block;
-			margin-bottom: 20px;
-			text-align: right;
-			font-size: 20px;
-			text-decoration: none;
-			color: #050542;
-		}
+			.close-button {
+				display: block;
+				margin-bottom: 20px;
+				text-align: right;
+				font-size: 20px;
+				text-decoration: none;
+				color: #050542;
+			}
 
-		ul {
-			list-style: none;
-			padding: 0;
+			ul {
+				list-style: none;
+				padding: 0;
 
-			li {
-				margin: 10px 0;
+				li {
+					margin: 10px 0;
 
-				a {
-					text-decoration: none;
-					color: #050542;
-					width: 100%;
-					font-size: 18px;
+					a {
+						text-decoration: none;
+						color: #050542;
+						width: 100%;
+						font-size: 18px;
 
-					&:hover, &:active{
-						background-color:#050542 ;
-						color:#66e5bf ;
+						&:hover,
+						&:active {
+							background-color: #050542;
+							color: #66e5bf;
+						}
 					}
 				}
 			}
